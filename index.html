@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="form.css">
+    <link rel="stylesheet" href="resume.css">
+    <title>Resume Maker</title>
+</head>
+
+<body>
+    <div id="header">Resume Maker</div>
+    <div id="content">
+        <div id="formpart">
+            <div class="partHeader">INPUT YOUR DETAILS</div>
+            <div id="categories">
+                <button id="personal" onclick="showper()">Personal</button>
+                <button id="education" onclick="showedu()">Education</button>
+                <button id="project" onclick="showpro()">Project</button>
+            </div>
+
+            <div class="inputForm">
+    <form id="per" name='personaldetails' onSubmit=" event.preventDefault();updateper(performValidation()); ">
+                    <ul>
+                        <li><label for="username">Name:</label></li>
+                        <li><input class="inputbox" type="text" name="username" /></li>
+
+                        <li><label for="address">Address:</label></li>
+                        <li><input class="inputbox" type="text" name="address" placeholder="City,State" /></li>
+
+                        <li><label for="country">Country:</label></li>
+                        <li>
+                            <select name="country">
+                                <option selected="" value="Default">(Please select a country)</option>
+                                <option value="Australia">Australia</option>
+                                <option value="Canada">Canada</option>
+                                <option value="India">India</option>
+                                <option value="Russia">Russia</option>
+                                <option value="USA">USA</option>
+                            </select>
+                        </li>
+                        <li><label for="phone">Phone No:</label></li>
+                        <li><input class="inputbox" type="text" name="phoneno" /></li>
+
+                        <li><label for="email">Email:</label></li>
+                        <li><input class="inputbox" type="text" name="email" /></li>
+
+                        <li><label id="gender">Sex:</label></li>
+                        <div>
+                            <span><input type="radio" name="msex" value="Male" id="male"
+                                    onclick="document.getElementById('female').checked = false" /><span>Male</span></span>
+                            <span><input type="radio" name="fsex" value="Female" id="female"
+                                    onclick="document.getElementById('male').checked = false" /><span>Female</span></span>
+                        </div>
+                        <li><label>Language:</label></li>
+                        <div>
+                            <span><input type="checkbox" name="en" value="en" checked /><span>English</span></span>
+                            <span><input type="checkbox" name="nonen" value="noen" /><span>Non English</span></span>
+                        </div>
+
+                        <li><label for="desc">About:</label></li>
+                        <li><textarea class="inputbox" name="desc" id="desc"></textarea></li>
+
+                    </ul>
+                    <input id="submitbtn" type="submit" value="Submit">
+                    <!-- <buttontype="submit" form="personaldetails" value="submit">Update</button> -->
+                </form>
+                <form id="edu" name='educationdetails' onSubmit="event.preventDefault();updateedu();">
+                    <ul>
+                        <li><label for="School">School Details:</label></li>
+                        <li><textarea class="inputbox" name="Schooldesc" id="schdesc"></textarea></li>
+
+                        <li><label for="College">College Details:</label></li>
+                        <li><textarea class="inputbox" name="Collegedesc" id="coldesc"></textarea></li>
+
+                        <li>
+                            <label for="skills">Skills: (Add many)</label>
+                            <button id="addbtn" onclick="addskill(); return false;">Add another</button>
+                        </li>
+                        <li id="skillbox">
+                            <div class="skill">
+                                <input class="inputbox" placeholder="(Rate 0 to 5)" type="text" name="skill" />
+                                <input class="inputbox" style="width: max-content;" type="number" min="0" max="5" step="1"/>
+                            </div>
+                        </li>
+
+                    </ul>
+                    <input id="submitbtn" type="submit" value="Submit">
+                    <!-- <button id="submitbtn" type="submit" form="educationdetails" value="submit">Submit</button> -->
+                </form>
+                <form id="pro" name='projectdetails' onSubmit="event.preventDefault();updateprt();">
+                    <ul>
+                        <li>
+                            <label for="Work">Work Experience:</label>
+                            <input type="checkbox" name="hvwrk" value="true" checked />
+                        </li>
+                        <li>
+                            <textarea class="inputbox" name="Workdesc" id="workdesc"></textarea>
+                        </li>
+
+                        <li>
+                            <label for="Project">Project Details:</label>
+                            <input type="checkbox" name="hvpro" value="true" checked />
+                        </li>
+                        <li>
+                            <textarea class="inputbox" name="Projectdesc" id="prodesc"></textarea>
+                        </li>
+
+                    </ul>
+                    <input id="submitbtn" type="submit" value="Submit">
+                    <!-- <button id="submitbtn" type="submit" form="educationdetails" value="submit">Submit</button> -->
+                </form>
+
+            </div>
+        </div>
+        <div id="previewpart">
+            <div id="preres" class="partHeader">PREVIEW RESUME </div>
+            <button id="prntres" onclick="download()">Print Now</button>
+            <div id="resume">
+                <div id="row1">
+                    <div id="name">Ankur Agrawal</div>
+                    <div id="info" class="rowdata">
+                        <hr>
+                        <h1>Personal Infos</h1>
+                        <div><strong style="font-family:sans-serif">Sex: </strong><div id="sex">Male</div></div>
+                        <div><strong style="font-family:sans-serif">Language: </strong><div id="lang">English</div></div>
+                        <div><strong style="font-family:sans-serif">Nationality: </strong><div id="nation">Indian</div></div>
+                        <div><strong style="font-family:sans-serif">Address: </strong><div id="address">Varanasi,U.P.</div></div>
+                        <!-- <div><strong style="font-family:sans-serif">Nationality</strong><div id=""> :Indian</div></div> -->
+                    </div>
+                    <div id="contact" class="rowdata">
+                        <hr>
+                        <h1>Contacts</h1>
+                        <div id="phnno">&#9742;: 912XXXXXX</div>
+                        <div id="useremail">&#8512;: ankuragrawalXXX@gmail.com</div>
+                    </div>
+
+                    <div id="skills" class="rowdata">
+                        <hr>
+                        <h1>Key Skills</h1>
+                        <div><strong>&#9733;</strong> Competitive Programming</div>
+                        <div><strong>&#9733;</strong> Web Development</div>
+                        <div><strong>&#9733;</strong> Basics of Robotics</div>
+                    </div>
+                </div>
+
+                <div id="row2">
+                    <div id="about" class="details">
+                        <!-- <hr> -->
+                        <div >About Me</div>
+                        <p id="aboutpara">Myself Ankur Agrawal and I'm from Varanasi, Uttar Pradesh. I am currently pursuing B.Tech.
+                            in Electronics from Indian Institute of Technology, B.H.U.. I have completed my secondary
+                            education from Sunbeam English School, Bhagwanpur with an aggregate of 90%.
+                            Currently my goal is to join a reputed company where I can gain some experience and
+                            knowledge
+                            and can also utilise my skills for its upliftment.</p>
+                    </div>
+                        <div id="education" class="details">
+                            <hr>
+                            <div >School Education</div>
+                            <p id="school">Sunbeam School</p>
+                            <div >College Education</div>
+                            <p id="college">IIT BHU 2nd year</p>
+                        </div>
+                        <div id="projects" class="details">
+                            <hr>
+                            <div id="projectdiv">Projects</div>
+                            <p id="projectpara">Many Projects uploaded on github account</p>
+                            <div id="achievementdiv">Achievements</div>
+                            <p id="achievementpara">Not yet looking forward for more.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+    <script src="form.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+h1 {  
+    margin-left: 2px;  
+}  
+form ul{
+    display: grid;
+    grid-template-columns: 40px auto;
+}
+form li {  
+    list-style: none;  
+    margin-bottom: 10px;
+}  
+      
+form ul li label{ 
+    text-align: left;  
+    margin: 0px;  
+    margin-left: -30px;
+    font-family:Verdana, Arial, Helvetica, sans-serif;  
+    font-size:14px;  
+    font-weight: 800;
+}  
+      
+form ul li input, select, span {  
+    float: left;  
+    margin-bottom: 10px;  
+}
+form ul li select{
+    border: 2px solid black;
+    border-radius: 5px;
+}
+.inputbox{
+    border: 2px solid black;
+    width: 95%;
+    border-radius: 5px;
+}
+form textarea {  
+    float: left;  
+    height: 150px;  
+}  
+      
+p {  
+    margin-left: 70px;  
+    font-weight: bold;  
+}  
+
+.header{
+    padding: 25px;
+    font-size: 30px;
+    text-align: center;
+    border: 1px solid #eee;
+}
+.inputMain{
+    width: 50%;
+    display: block;
+    float: left;
+
+}
+form div{
+    margin-left: 10px;
+}
+#submitbtn{
+    font-size:18px  ;
+    width: 90%;
+    margin: 0px 5% 5px 5%;  
+    background-color: rgb(92, 179, 21);
+    color: white;
+    font-weight: 800;
+    border: 5px double black;
+}
+#edu ul{
+    grid-template-columns: auto;
+}
+#pro ul{
+    grid-template-columns: auto;
+}
+#pro ul li input{
+    float: none;
+}
